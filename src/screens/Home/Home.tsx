@@ -46,6 +46,7 @@ const Home = () => {
         keyExtractor={(item) => item.id}
         refreshing={isLoading}
         onRefresh={() => dispatch(getEvents())}
+        extraData={isLoading}
       />
     </View>
   )

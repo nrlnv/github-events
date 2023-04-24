@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import baseService from '../baseService'
 
 const initialState: {
-  events: any[]
+  events: []
   isLoading: boolean
 } = {
   events: [],
