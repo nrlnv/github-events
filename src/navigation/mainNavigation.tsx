@@ -13,7 +13,7 @@ import Details from '../screens/Details/Details'
 // types
 export type MainStackParamsList = {
   Home: undefined
-  Details: { login: string }
+  Details: { user: any }
 }
 
 export type StackNavigation = NavigationProp<MainStackParamsList>

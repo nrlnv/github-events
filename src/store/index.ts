@@ -2,13 +2,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 // reducers
-import homeSlice from './homeSlice'
-import userSlice from './userSlice'
+import usersSlice from './usersSlice'
 
 const store = configureStore({
   reducer: {
-    homeSlice,
-    userSlice,
+    usersSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

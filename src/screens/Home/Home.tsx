@@ -4,10 +4,10 @@ import { useIsFocused } from '@react-navigation/native'
 
 // redux
 import { useAppDispatch, useAppSelector } from '../../store'
-import { getEvents, selectEvents, selectIsLoading } from '../../store/homeSlice'
+import { getUsers, selectIsLoading, selectUsers } from '../../store/usersSlice'
 
 // components
-import EventItem from '../../components/EventItem/EventItem'
+import UserItem from '../../components/EventItem/UserItem'
 
 // styles
 import styles from './styles'
@@ -15,18 +15,18 @@ import styles from './styles'
 const Home = () => {
   const dispatch = useAppDispatch()
   const isFocused = useIsFocused()
-  const events = useAppSelector(selectEvents)
+  const users = useAppSelector(selectUsers)
   const isLoading = useAppSelector(selectIsLoading)
 
   useEffect(() => {
     if (isFocused) {
-      dispatch(getEvents())
+      dispatch(getUsers())
     }
   }, [dispatch, isFocused])
 
   useEffect(() => {
     let timer = setInterval(() => {
-      dispatch(getEvents())
+      dispatch(getUsers())
     }, 30000)
 
     return () => {
@@ -35,17 +35,17 @@ const Home = () => {
   }, [isFocused])
 
   const renderItem = ({ item }: any) => {
-    return <EventItem event={item} />
+    return <UserItem user={item} />
   }
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={events}
+        data={users}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(_, index) => index.toString()}
         refreshing={isLoading}
-        onRefresh={() => dispatch(getEvents())}
+        onRefresh={() => dispatch(getUsers())}
         extraData={isLoading}
       />
     </View>
